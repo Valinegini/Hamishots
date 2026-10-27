@@ -82,8 +82,9 @@ textarea{min-height:120px;resize:vertical}
 footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
 @media (max-width:760px){.hero,.about{grid-template-columns:1fr}.svc{grid-template-columns:1fr;gap:.2rem}.steps{grid-template-columns:1fr}form{grid-template-columns:1fr}.collage{grid-template-rows:170px 170px}section{padding:3.2rem 0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
- .grid .ph.img{height:auto !important;min-height:0 !important;aspect-ratio:auto !important;display:block}
-.grid .ph.img img{position:static !important;display:block;width:100%;height:auto !important;border-radius:14px}
+.grid .ph:has(img){height:auto !important;min-height:0 !important;display:block !important}
+.grid .ph img{position:static !important;display:block;width:100%;height:auto !important;border-radius:14px}
+.grid .ph[hidden]{display:none !important}
 </style>
 </head>
 <body>
@@ -128,7 +129,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;border-top:1px so
   <button class="chip" aria-pressed="false" data-f="events">Events</button>
  </div>
  <div class="grid" id="grid">
-  <div class="ph g3 s" data-c="portrait"><img src="images/Portrait01.webp" alt="Smiling woman" fetchpriority="high"></div>
+  <div class="ph g3 s" data-c="portrait"><img src="images/Portrait01.webp" alt="Smiling woman" loading="lazy"></div>
   <div class="ph g3 s" data-c="portrait"><img src="images/portrait-03.webp" alt="Woman in a long houndstooth coat with a fur collar and tan boots, leaning on a stone wall in autumn" loading="lazy"></div>
   <div class="ph g3 s" data-c="portrait"><img src="images/portrait-02.webp" alt="Man in a mustard shirt, flat cap and sunglasses standing in a sunny green park" loading="lazy"></div>
   <div class="ph g3 s" data-c="portrait"><img src="images/portrait-04.webp" alt="Woman with long dark hair in a black top, resting her chin on her hand against a soft white backdrop" loading="lazy"></div>
@@ -136,7 +137,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;border-top:1px so
   <div class="ph g2 s" data-c="family"><span>Family</span></div>
   <div class="ph g4 m" data-c="portrait"><span>Portrait</span></div>
   <div class="ph g3 s" data-c="business"><span>Business</span></div>
-  <div class="ph g3 s" data-c="Baby"><img src="images/Baby-Portrait.webp" alt="Portrait by Hamishots" fetchpriority="high"></div>
+  <div class="ph g3 s" data-c="Baby"><img src="images/Baby-Portrait.webp" alt="Portrait by Hamishots" loading="lazy"></div>
   <div class="ph g5 t" data-c="couples"><span>Couples</span></div>
   <div class="ph g6 m" data-c="events"><span>Events</span></div>
   <div class="ph g2 m" data-c="family"><span>Family</span></div>
