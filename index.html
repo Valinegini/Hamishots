@@ -222,13 +222,13 @@ var CONFIG={email:"hamiphoto2025@gmail.com",phone:"416-887-8567",maps:"",instagr
   document.getElementById("e-email").textContent=good?"":"Enter a valid email address.";
   if(!n.value.trim()||!good)return;
   st.hidden=false;
-  if(!CONFIG.email){st.textContent="This form isn’t connected yet. Add your email in the CONFIG line to turn it on.";return}
-  var g=function(id){return document.getElementById(id).value};
-  var body="Name: "+g("name")+"\nEmail: "+g("email")+"\nService: "+g("service")+"\nDate: "+g("date")+"\nLocation: "+g("loc")+"\n\n"+g("msg");
-  location.href="mailto:"+CONFIG.email+"?subject="+encodeURIComponent("Session inquiry from "+g("name"))+"&body="+encodeURIComponent(body);
-  st.textContent="Your email app should open with the message ready. Press send there to finish. If nothing opens, email "+CONFIG.email+" directly.";
- });
-})();
+if(!CONFIG.formEndpoint){st.textContent="This form isn’t connected yet. Please email "+CONFIG.email+" directly.";return}
+st.textContent="Sending…";
+var g=function(id){return document.getElementById(id).value};
+fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:g("name"),email:g("email"),service:g("service"),date:g("date"),location:g("loc"),message:g("msg")})})
+.then(function(r){if(r.ok){st.textContent="Thank you! Your inquiry was sent. I’ll reply soon.";f.reset()}else{throw new Error()}})
+.catch(function(){st.textContent="Sorry, something went wrong. Please email "+CONFIG.email+" directly."});
+
 </script>
 </body>
 </html>
